@@ -1,3 +1,25 @@
-# erp.aero.test
+## Тестовый проект для  ERP.AERO
 
-Test project for ERP.AERO
+Для запуска проекта необходимо [загрузить и установить Node.js](https://nodejs.org/en/download/), а так же понадобится сервер [MySQL](https://www.mysql.com/downloads/)
+1. Чтобый запустить проект, нужно в корне проекта запустить установку зависимостей.
+```sh
+npm install
+```
+2. Так же необходимо настроить параметры окружения, пример есть в .env-example файле.
+```sh
+cp .env-example .env
+```
+
+## API
+- /signin [POST] - аутентификация по id и password
+- /signin/new_token [POST] - обновление токена, необходимо передать <i>refreshToken</i>
+- /signup [POST] - регистрация нового пользователя (id, password)
+- /logout [GET] - удаление <i>refreshToken</i>, старый токен доступа будет работать пока не закончится срок, но обновление не будет возможным. 
+- /info [GET] - получение данных пользователя
+
+- /file/upload [POST] - загрузка файла на сервер, ключ файла - <i>file</i>
+- /file/list [GET] - получение списка файлов, парметры: <i>list_size</i> - кол-во возвращаемых элементов,  <i>page</i>  - номер страницы
+- /file/:id [GET] - получение информации о файле
+- /file/download/:id [GET] - скачивание файла
+- /file/delete/:id [DELETE] - удаление файла на сервере
+- /file/update/:id [PUT] - обновление файла на сервере, ключ фалйа - <i>file</i>
